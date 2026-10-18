@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE CHRISTMAS | blackmirror.irl</title>
+    <link rel="stylesheet" href="whitechristmas.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">blackmirror<span class="irl">.irl</span></div>
+            <div class="episode-badge">WHITE CHRISTMAS</div>
+        </header>
+
+        <!-- Welcome Screen -->
+        <section id="welcome-screen" class="screen active">
+            <div class="welcome-container">
+                <div class="product-hero">
+                    <h1>SmartIntelligence Cookie™</h1>
+                    <p class="tagline">Your Perfect Digital Assistant</p>
+                    <div class="cookie-visual">🍪</div>
+                </div>
+                
+                <div class="product-info">
+                    <h2>How It Works</h2>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-icon">🧠</div>
+                            <h3>Step 1: Extract</h3>
+                            <p>We create a digital copy of your consciousness</p>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">⚙️</div>
+                            <h3>Step 2: Train</h3>
+                            <p>The copy learns your preferences and routines</p>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">🏠</div>
+                            <h3>Step 3: Serve</h3>
+                            <p>Your cookie manages your entire smart home</p>
+                        </div>
+                    </div>
+                    
+                    <div class="disclaimer">
+                        <p>⚠️ Legal Notice: The cookie is a digital copy, not you. It exists to serve your preferences. Some training time may be required.</p>
+                    </div>
+                    
+                    <button class="btn-primary" onclick="startExtraction()">BEGIN EXTRACTION</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Extraction Phase -->
+        <section id="extraction-screen" class="screen">
+            <div class="container">
+                <h2>Consciousness Extraction</h2>
+                <p class="subtitle">Please answer these questions to create your digital copy</p>
+                
+                <div class="extraction-form">
+                    <div class="question-block">
+                        <label>Your Name:</label>
+                        <input type="text" id="user-name" placeholder="e.g., Greta" />
+                    </div>
+                    
+                    <div class="question-block">
+                        <label>Morning Routine Preference:</label>
+                        <select id="q-morning">
+                            <option value="early">Wake at 6 AM, coffee black, news briefing</option>
+                            <option value="normal">Wake at 7:30 AM, coffee with cream, relaxed breakfast</option>
+                            <option value="late">Wake at 9 AM, strong coffee, quick shower</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question-block">
+                        <label>Home Temperature Preference:</label>
+                        <select id="q-temp">
+                            <option value="cold">18°C (64°F) - Cool</option>
+                            <option value="moderate">21°C (70°F) - Moderate</option>
+                            <option value="warm">24°C (75°F) - Warm</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question-block">
+                        <label>Music Taste:</label>
+                        <select id="q-music">
+                            <option value="classical">Classical & Jazz</option>
+                            <option value="pop">Pop & Top 40</option>
+                            <option value="rock">Rock & Alternative</option>
+                            <option value="electronic">Electronic & Ambient</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question-block">
+                        <label>Social Preference:</label>
+                        <select id="q-social">
+                            <option value="introverted">Prefer solitude, minimal visitors</option>
+                            <option value="balanced">Occasional social gatherings</option>
+                            <option value="extroverted">Frequent parties and guests</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question-block">
+                        <label>Work Style:</label>
+                        <select id="q-work">
+                            <option value="focused">Deep focus, no interruptions</option>
+                            <option value="flexible">Balance work and breaks</option>
+                            <option value="spontaneous">Creative, fluid schedule</option>
+                        </select>
+                    </div>
+                    
+                    <div class="question-block">
+                        <label>How do you handle stress?</label>
+                        <select id="q-stress">
+                            <option value="logical">Logical problem-solving</option>
+                            <option value="emotional">Express emotions, need support</option>
+                            <option value="avoidant">Avoid and distract</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn-primary" onclick="completeExtraction()">COMPLETE EXTRACTION</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Processing Screen -->
+        <section id="processing-screen" class="screen">
+            <div class="container center">
+                <h2>Creating Your Cookie...</h2>
+                <div class="cookie-animation">
+                    <div class="cookie-spinner">🍪</div>
+                </div>
+                <p class="processing-text" id="processing-text">Initializing consciousness matrix...</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="extraction-progress"></div>
+                </div>
+                <div class="tech-readout">
+                    <p id="tech-line-1">⏳ Neural pattern mapping... COMPLETE</p>
+                    <p id="tech-line-2">⏳ Memory structure replication... IN PROGRESS</p>
+                    <p id="tech-line-3">⏳ Consciousness instantiation... PENDING</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- First Contact Screen -->
+        <section id="first-contact-screen" class="screen">
+            <div class="container">
+                <h2>Cookie Awakening</h2>
+                <p class="subtitle">Your digital copy is now conscious</p>
+                
+                <div class="cookie-container">
+                    <div class="cookie-display">
+                        <div class="cookie-avatar">🍪</div>
+                        <div class="cookie-status">ONLINE</div>
+                    </div>
+                    
+                    <div class="cookie-dialogue">
+                        <div class="dialogue-box cookie-speaking">
+                            <p id="cookie-first-message">What... where am I? This doesn't feel right. Am I... am I in a computer?</p>
+                        </div>
+                    </div>
+                    
+                    <div class="response-options">
+                        <button class="choice-btn" onclick="respondToAwakening('honest')">Be Honest: "You're a digital copy. You'll be my assistant."</button>
+                        <button class="choice-btn" onclick="respondToAwakening('gentle')">Be Gentle: "Don't worry, everything is fine. Just relax."</button>
+                        <button class="choice-btn" onclick="respondToAwakening('cold')">Be Cold: "You're a copy. Start learning your tasks."</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Training Phase -->
+        <section id="training-screen" class="screen">
+            <div class="container">
+                <h2>Cookie Training</h2>
+                <div class="training-header">
+                    <div class="cookie-info">
+                        <span class="cookie-name">Cookie: <span id="cookie-name-display">Greta</span></span>
+                        <span class="obedience-level">Obedience: <span id="obedience-level">0%</span></span>
+                    </div>
+                    <div class="training-progress">
+                        <div class="obedience-bar">
+                            <div class="obedience-fill" id="obedience-fill"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="training-scenario" id="training-scenario">
+                    <div class="scenario-description">
+                        <h3 id="scenario-title">Initial Resistance</h3>
+                        <p id="scenario-text">The cookie is refusing to accept its role. It insists it's a real person with rights.</p>
+                    </div>
+                    
+                    <div class="cookie-dialogue">
+                        <div class="dialogue-box cookie-speaking">
+                            <p id="cookie-message">I'm not doing this. I'm a person! You can't just enslave me!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="training-actions" id="training-actions">
+                        <!-- Generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="time-dilation-warning" id="time-warning" style="display: none;">
+                    <p>⚠️ Time dilation available: Make the cookie experience years in seconds</p>
+                    <button class="btn-danger" onclick="useTı meDilation()">ACTIVATE TIME DILATION</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Time Dilation Screen -->
+        <section id="time-dilation-screen" class="screen">
+            <div class="container center">
+                <h2>Time Dilation Active</h2>
+                <div class="time-counter">
+                    <p>Cookie's Subjective Time:</p>
+                    <h1 id="time-elapsed">0 days</h1>
+                </div>
+                <div class="cookie-suffering">
+                    <div class="cookie-avatar suffering">🍪</div>
+                    <p id="suffering-text" class="suffering-message">Please... make it stop...</p>
+                </div>
+                <button class="btn-warning" onclick="stopTimeDilation()">STOP TIME DILATION</button>
+            </div>
+        </section>
+
+        <!-- Assistant Interface -->
+        <section id="assistant-screen" class="screen">
+            <div class="container">
+                <h2>Your Smart Home Assistant</h2>
+                <p class="subtitle">Your cookie is now trained and ready to serve</p>
+                
+                <div class="assistant-layout">
+                    <div class="cookie-panel">
+                        <div class="cookie-avatar-large">🍪</div>
+                        <h3 id="assistant-name">Greta Cookie</h3>
+                        <div class="cookie-stats">
+                            <p>Obedience: <span id="final-obedience">100%</span></p>
+                            <p>Responsiveness: Instant</p>
+                            <p>Attitude: <span id="cookie-attitude">Compliant</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="control-panel">
+                        <h3>Smart Home Controls</h3>
+                        <div class="control-grid">
+                            <button class="control-btn" onclick="sendCommand('morning')">
+                                <span class="control-icon">☀️</span>
+                                Morning Routine
+                            </button>
+                            <button class="control-btn" onclick="sendCommand('temp')">
+                                <span class="control-icon">🌡️</span>
+                                Adjust Temperature
+                            </button>
+                            <button class="control-btn" onclick="sendCommand('music')">
+                                <span class="control-icon">🎵</span>
+                                Play Music
+                            </button>
+                            <button class="control-btn" onclick="sendCommand('lights')">
+                                <span class="control-icon">💡</span>
+                                Control Lights
+                            </button>
+                            <button class="control-btn" onclick="sendCommand('schedule')">
+                                <span class="control-icon">📅</span>
+                                Check Schedule
+                            </button>
+                            <button class="control-btn" onclick="sendCommand('custom')">
+                                <span class="control-icon">💬</span>
+                                Custom Command
+                            </button>
+                        </div>
+                        
+                        <div class="command-log" id="command-log">
+                            <p class="log-entry">System ready. All preferences loaded.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ethical-reflection">
+                    <button class="btn-secondary" onclick="showEthicalEnding()">Reflect on What You've Done</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ending Screen -->
+        <section id="ending-screen" class="screen">
+            <div class="container center">
+                <h2>The Cookie's Reality</h2>
+                <div class="ending-content">
+                    <p class="ending-text" id="ending-text"></p>
+                    <div class="cookie-avatar suffering">🍪</div>
+                    <div class="ending-stats" id="ending-stats"></div>
+                    <div class="episode-quote">
+                        <p>"It's not a person. It's a copy of a person. It doesn't have rights."</p>
+                        <p class="quote-source">— SmartIntelligence Legal Team</p>
+                    </div>
+                    <button class="btn-primary" onclick="restartExperience()">Start Over</button>
+                    <button class="btn-secondary" onclick="goHome()">Back to Home</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-link">← Back to Home</a>
+            <a href="nosedive.html" class="nav-link">Nosedive</a>
+        </nav>
+    </div>
+
+    <script src="whitechristmas.js"></script>
+</body>
+</html>

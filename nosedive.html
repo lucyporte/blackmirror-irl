@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOSEDIVE | blackmirror.irl</title>
+    <link rel="stylesheet" href="nosedive.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">blackmirror<span class="irl">.irl</span></div>
+            <div class="episode-badge">NOSEDIVE</div>
+        </header>
+
+        <!-- Welcome Screen -->
+        <section id="welcome-screen" class="screen active">
+            <div class="welcome-content">
+                <h1 class="welcome-title">✨ Welcome to RateLife ✨</h1>
+                <p class="welcome-subtitle">Where Every Moment Counts!</p>
+                
+                <div class="info-box">
+                    <p>🌟 In this world, everyone rates everyone!</p>
+                    <p>🎯 Your rating determines your opportunities</p>
+                    <p>💝 Be nice, smile, and watch your score soar!</p>
+                    <p>⚠️ But one bad interaction could ruin everything...</p>
+                </div>
+
+                <div class="setup-form">
+                    <label for="player-name">Your Name:</label>
+                    <input type="text" id="player-name" placeholder="Enter your name" value="Lacie">
+                    
+                    <label for="starting-score">Starting Rating:</label>
+                    <div class="score-slider-container">
+                        <input type="range" id="starting-score" min="2.5" max="4.5" step="0.1" value="4.2">
+                        <span class="score-display" id="starting-score-display">4.2</span>
+                    </div>
+                    <p class="hint">Tip: Start at 4.2 to experience Lacie's journey from the episode!</p>
+                </div>
+
+                <button class="btn-primary" onclick="startGame()">BEGIN YOUR JOURNEY</button>
+            </div>
+        </section>
+
+        <!-- Main Game Screen -->
+        <section id="game-screen" class="screen">
+            <!-- Player Profile Card -->
+            <div class="profile-card">
+                <div class="profile-avatar">
+                    <div class="avatar-circle">
+                        <span id="player-initials">L</span>
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <h2 id="player-name-display">Lacie</h2>
+                    <div class="rating-display">
+                        <div class="stars" id="player-stars">★★★★☆</div>
+                        <div class="rating-number" id="player-rating">4.2</div>
+                    </div>
+                    <div class="rating-bar">
+                        <div class="rating-fill" id="rating-fill" style="width: 84%"></div>
+                    </div>
+                </div>
+                <div class="rating-status" id="rating-status">
+                    <span class="status-badge good">PRIME USER</span>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-panel">
+                <button class="action-btn" onclick="showPostModal()">
+                    <span class="btn-icon">📝</span>
+                    <span>Post Update</span>
+                </button>
+                <button class="action-btn" onclick="viewFeed()">
+                    <span class="btn-icon">📱</span>
+                    <span>View Feed</span>
+                </button>
+                <button class="action-btn" onclick="viewOpportunities()">
+                    <span class="btn-icon">🎯</span>
+                    <span>Opportunities</span>
+                </button>
+            </div>
+
+            <!-- Game Feed / Interactions -->
+            <div class="game-content">
+                <div class="content-header">
+                    <h3>Recent Interactions</h3>
+                    <div class="interaction-count">
+                        Interactions: <span id="interaction-count">0</span>
+                    </div>
+                </div>
+
+                <div id="interactions-feed" class="interactions-feed">
+                    <div class="empty-state">
+                        <p>👋 Start interacting to see your journey unfold!</p>
+                        <p>Every choice affects your rating...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Feed Modal -->
+            <div id="feed-modal" class="modal">
+                <div class="modal-content large">
+                    <div class="modal-header">
+                        <h3>Social Feed</h3>
+                        <button class="close-btn" onclick="closeModal('feed-modal')">×</button>
+                    </div>
+                    <div class="feed-container" id="feed-container">
+                        <!-- Posts generated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post Modal -->
+            <div id="post-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Create Post</h3>
+                        <button class="close-btn" onclick="closeModal('post-modal')">×</button>
+                    </div>
+                    <div class="post-composer">
+                        <textarea id="post-text" placeholder="Share something wonderful! ✨" maxlength="200"></textarea>
+                        <div class="char-count"><span id="char-count">0</span>/200</div>
+                        <div class="post-options">
+                            <button class="btn-secondary" onclick="createPost('genuine')">Post Genuine Thought</button>
+                            <button class="btn-secondary" onclick="createPost('fake')">Post Perfectly Curated Content</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opportunities Modal -->
+            <div id="opportunities-modal" class="modal">
+                <div class="modal-content large">
+                    <div class="modal-header">
+                        <h3>Opportunities & Services</h3>
+                        <button class="close-btn" onclick="closeModal('opportunities-modal')">×</button>
+                    </div>
+                    <div class="opportunities-grid" id="opportunities-grid">
+                        <!-- Generated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Random Encounter Modal -->
+            <div id="encounter-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 id="encounter-title">Random Encounter</h3>
+                    </div>
+                    <div class="encounter-content">
+                        <div class="encounter-avatar" id="encounter-avatar">👤</div>
+                        <p class="encounter-name" id="encounter-name">Person</p>
+                        <p class="encounter-rating" id="encounter-rating">★★★★☆ 4.0</p>
+                        <p class="encounter-description" id="encounter-description"></p>
+                    </div>
+                    <div class="encounter-choices" id="encounter-choices">
+                        <!-- Generated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Over Modal -->
+            <div id="gameover-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 id="gameover-title">Your Journey Ends</h3>
+                    </div>
+                    <div class="gameover-content">
+                        <div class="final-rating" id="final-rating">2.6</div>
+                        <p id="gameover-message"></p>
+                        <div class="gameover-stats" id="gameover-stats"></div>
+                        <button class="btn-primary" onclick="restartGame()">Start Over</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-link">← Back to Home</a>
+            <a href="index.html" class="nav-link">Be Right Back</a>
+        </nav>
+    </div>
+
+    <script src="nosedive.js"></script>
+</body>
+</html>

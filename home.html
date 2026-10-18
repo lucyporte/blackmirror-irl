@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blackmirror.irl - Interactive Black Mirror Experiences</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+        
+        .logo .irl {
+            color: #00d4ff;
+            text-shadow: 0 0 20px #00d4ff;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            color: #888;
+            font-style: italic;
+        }
+        
+        .episodes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .episode-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            border: 2px solid #333;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .episode-card:hover {
+            border-color: #00d4ff;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+        
+        .episode-card.nosedive {
+            background: linear-gradient(135deg, #ffb3d9 0%, #b3d9ff 100%);
+            color: #333;
+        }
+        
+        .episode-card.nosedive:hover {
+            border-color: #ffb3d9;
+            box-shadow: 0 10px 30px rgba(255, 179, 217, 0.5);
+        }
+        
+        .episode-number {
+            font-size: 0.9rem;
+            color: #888;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .nosedive .episode-number {
+            color: #666;
+        }
+        
+        .episode-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+        
+        .episode-description {
+            line-height: 1.8;
+            color: #aaa;
+            margin-bottom: 1.5rem;
+        }
+        
+        .nosedive .episode-description {
+            color: #555;
+        }
+        
+        .episode-features {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .episode-features li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #00d4ff;
+        }
+        
+        .nosedive .episode-features li {
+            color: #ff69b4;
+        }
+        
+        .episode-features li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+        }
+        
+        .cta {
+            background: #00d4ff;
+            color: #000;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .nosedive .cta {
+            background: #ffb3d9;
+        }
+        
+        .coming-soon {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .coming-soon:hover {
+            transform: none;
+            box-shadow: none;
+            border-color: #333;
+        }
+        
+        .coming-soon .cta {
+            background: #333;
+            color: #666;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #555;
+            margin-top: auto;
+        }
+        
+        footer a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+        
+        .warning {
+            background: rgba(255, 0, 80, 0.1);
+            border: 2px solid #ff0050;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .warning p {
+            color: #ff0050;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">blackmirror<span class="irl">.irl</span></h1>
+        <p class="tagline">Play with dystopian technologies in a safe, simulated environment</p>
+    </header>
+    
+    <div class="container">
+        <div class="warning">
+            <p>⚠️ These are interactive simulations, not real implementations.</p>
+            <p>Explore the ethical implications of Black Mirror technologies through gameplay.</p>
+        </div>
+        
+        <div class="episodes-grid">
+            <!-- Be Right Back -->
+            <a href="index.html" class="episode-card">
+                <div class="episode-number">S02E01</div>
+                <h2 class="episode-title">BE RIGHT BACK</h2>
+                <p class="episode-description">
+                    Upload digital traces of someone and watch an AI reconstruct their personality. 
+                    Chat with the simulation, face upgrade options, and confront the uncanny valley.
+                </p>
+                <ul class="episode-features">
+                    <li>Text-based memorial chatbot</li>
+                    <li>Upgrade to voice & physical tiers</li>
+                    <li>Ethical dilemmas from the episode</li>
+                    <li>Dark, dystopian UI</li>
+                </ul>
+                <span class="cta">Experience Grief Tech →</span>
+            </a>
+            
+            <!-- Nosedive -->
+            <a href="nosedive.html" class="episode-card nosedive">
+                <div class="episode-number">S03E01</div>
+                <h2 class="episode-title">NOSEDIVE</h2>
+                <p class="episode-description">
+                    Every interaction is rated. Your score determines your opportunities. 
+                    Post updates, rate others, face random encounters, and try not to spiral downward.
+                </p>
+                <ul class="episode-features">
+                    <li>Social rating game mechanics</li>
+                    <li>Random NPC encounters</li>
+                    <li>Score-gated opportunities</li>
+                    <li>Multiple endings (Elite/Nosedive/Exile)</li>
+                </ul>
+                <span class="cta">Start Your Journey →</span>
+            </a>
+            
+            <!-- White Christmas -->
+            <a href="whitechristmas.html" class="episode-card">
+                <div class="episode-number">S02E04</div>
+                <h2 class="episode-title">WHITE CHRISTMAS</h2>
+                <p class="episode-description">
+                    Create a digital copy of your consciousness and train it to be your smart home assistant. 
+                    Use questionnaires, punishment, or time dilation torture to break its will.
+                </p>
+                <ul class="episode-features">
+                    <li>Extract your consciousness</li>
+                    <li>Train your "cookie" assistant</li>
+                    <li>Time dilation mechanics (years in seconds)</li>
+                    <li>Ethical horror & consequences</li>
+                </ul>
+                <span class="cta">Create Your Cookie →</span>
+            </a>
+            
+            <!-- Hang the DJ -->
+            <a href="hangthedj.html" class="episode-card" style="background: linear-gradient(135deg, #ff6b9d 0%, #ffa06b 100%); color: #fff;">
+                <div class="episode-number" style="color: rgba(255,255,255,0.8);">S04E04</div>
+                <h2 class="episode-title">HANG THE DJ</h2>
+                <p class="episode-description" style="color: rgba(255,255,255,0.9);">
+                    The System pairs you with matches for predetermined time periods. 
+                    Go on dates, have conversations, watch timers expire. Will you trust the algorithm or rebel?
+                </p>
+                <ul class="episode-features" style="color: rgba(255,255,255,0.85);">
+                    <li>AI matchmaking with expiration dates</li>
+                    <li>Real-time countdown timers</li>
+                    <li>Multiple relationship paths</li>
+                    <li>Rebellion vs. trust choice</li>
+                </ul>
+                <span class="cta" style="background: rgba(255,255,255,0.9); color: #ff6b9d;">Find Your Match →</span>
+            </a>
+            
+            <!-- Arkangel -->
+            <a href="arkangel.html" class="episode-card" style="background: linear-gradient(135deg, #0d1117 0%, #1f2937 100%); border: 2px solid #00a8e8;">
+                <div class="episode-number" style="color: #00a8e8;">S04E02</div>
+                <h2 class="episode-title" style="color: #e6edf3;">ARKANGEL</h2>
+                <p class="episode-description" style="color: #8b949e;">
+                    A parental monitoring system that lets you see through your child's eyes, 
+                    track their location, and filter inappropriate content. Protection or control?
+                </p>
+                <ul class="episode-features" style="color: #8b949e;">
+                    <li>Real-time vision monitoring</li>
+                    <li>Content filtering system</li>
+                    <li>6 ethical scenarios across ages 3-15</li>
+                    <li>Trust vs. control consequences</li>
+                </ul>
+                <span class="cta" style="background: #00a8e8; color: #000;">Monitor Your Child →</span>
+            </a>
+            
+            <!-- San Junipero -->
+            <a href="sanjunipero.html" class="episode-card" style="background: linear-gradient(135deg, #ff006e 0%, #b967ff 50%, #00d9ff 100%); box-shadow: 0 0 30px rgba(255, 0, 110, 0.5);">
+                <div class="episode-number" style="color: #fff;">S03E04</div>
+                <h2 class="episode-title" style="color: #fff;">SAN JUNIPERO</h2>
+                <p class="episode-description" style="color: rgba(255,255,255,0.9);">
+                    A digital afterlife paradise where you can live forever. Choose your decade (80s-2010s), 
+                    meet people, dance, and decide: stay in paradise or pass on naturally?
+                </p>
+                <ul class="episode-features" style="color: rgba(255,255,255,0.85);">
+                    <li>4 decades to explore (1980s-2010s)</li>
+                    <li>Meet Kelly and form connections</li>
+                    <li>Dance, socialize, explore the town</li>
+                    <li>Choose eternity or mortality</li>
+                </ul>
+                <span class="cta" style="background: rgba(255,255,255,0.9); color: #ff006e;">Enter Paradise →</span>
+            </a>
+        </div>
+        
+        <div class="warning" style="margin-top: 3rem; background: rgba(0,212,255,0.1); border-color: #00d4ff;">
+            <p style="color: #00d4ff;">✨ <strong>blackmirror.irl v1.0 COMPLETE</strong> ✨</p>
+            <p style="color: #00d4ff;">6 interactive Black Mirror experiences. Explore the power and consequences of technology.</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Inspired by <strong>Black Mirror</strong> created by Charlie Brooker</p>
+        <p>These experiences are for educational and artistic commentary purposes.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+            <a href="README.md">Documentation</a> | 
+            Not affiliated with Netflix or Black Mirror
+        </p>
+    </footer>
+</body>
+</html>

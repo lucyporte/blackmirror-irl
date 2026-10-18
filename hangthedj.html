@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HANG THE DJ | blackmirror.irl</title>
+    <link rel="stylesheet" href="hangthedj.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">blackmirror<span class="irl">.irl</span></div>
+            <div class="episode-badge">HANG THE DJ</div>
+        </header>
+
+        <!-- Welcome Screen -->
+        <section id="welcome-screen" class="screen active">
+            <div class="welcome-content">
+                <div class="system-logo">
+                    <div class="logo-icon">💕</div>
+                    <h1>The System</h1>
+                    <p class="tagline">Find Your Perfect Match. Trust The Process.</p>
+                </div>
+                
+                <div class="info-box">
+                    <h2>How It Works</h2>
+                    <div class="steps">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            <p>The System pairs you with compatible matches</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            <p>Each relationship has a predetermined expiration date</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            <p>The System learns from each pairing</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">4</span>
+                            <p>Your ultimate pairing awaits at the end</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rules">
+                        <p><strong>Rules:</strong></p>
+                        <ul>
+                            <li>You cannot choose your matches</li>
+                            <li>You cannot see your compatibility percentage</li>
+                            <li>You must complete each relationship's duration</li>
+                            <li>The System knows best</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="profile-setup">
+                    <h3>Create Your Profile</h3>
+                    <input type="text" id="user-name" placeholder="Your name" value="Frank" />
+                    <button class="btn-primary" onclick="startDating()">JOIN THE SYSTEM</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Dating Screen -->
+        <section id="dating-screen" class="screen">
+            <div class="container">
+                <!-- User Status Bar -->
+                <div class="status-bar">
+                    <div class="user-info">
+                        <div class="user-avatar">👤</div>
+                        <div class="user-details">
+                            <h3 id="user-name-display">Frank</h3>
+                            <p class="user-stats">
+                                Relationships: <span id="relationship-count">0</span> | 
+                                Time in System: <span id="total-time">0h</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="system-status">
+                        <span class="status-indicator">●</span> The System is learning...
+                    </div>
+                </div>
+
+                <!-- Current Match Card -->
+                <div class="match-card" id="match-card">
+                    <div class="match-header">
+                        <h2>New Match Found</h2>
+                        <div class="system-badge">Assigned by The System</div>
+                    </div>
+                    
+                    <div class="match-profile">
+                        <div class="match-avatar" id="match-avatar">👤</div>
+                        <h3 id="match-name">Amy</h3>
+                        <p id="match-bio">Waiting to meet you...</p>
+                        
+                        <div class="compatibility-locked">
+                            <div class="lock-icon">🔒</div>
+                            <p>Compatibility: <span class="hidden-text">????</span></p>
+                            <p class="small-text">Revealed after relationship expires</p>
+                        </div>
+                    </div>
+                    
+                    <div class="expiration-timer">
+                        <h4>Relationship Expires In:</h4>
+                        <div class="timer-display" id="timer-display">12:00:00</div>
+                        <div class="expiration-bar">
+                            <div class="expiration-fill" id="expiration-fill"></div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary" id="interaction-btn" onclick="startInteraction()">BEGIN DATE</button>
+                </div>
+
+                <!-- Check Expiration Button -->
+                <div class="check-device" id="check-device-btn" style="display: none;">
+                    <button class="btn-secondary" onclick="checkDevice()">📱 Check Your Device</button>
+                    <p class="hint">See how much time you have left</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Date Interaction Screen -->
+        <section id="interaction-screen" class="screen">
+            <div class="container">
+                <div class="date-scene">
+                    <div class="scene-header">
+                        <h3 id="scene-location">The Restaurant</h3>
+                        <div class="time-remaining-small" id="time-remaining-small">12:00:00 remaining</div>
+                    </div>
+                    
+                    <div class="conversation">
+                        <div class="match-avatar-large" id="date-avatar">👤</div>
+                        <div class="dialogue-box" id="dialogue-box">
+                            <p id="date-dialogue">So... this is interesting. First time using The System?</p>
+                        </div>
+                    </div>
+                    
+                    <div class="response-choices" id="response-choices">
+                        <!-- Generated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expiration Screen -->
+        <section id="expiration-screen" class="screen">
+            <div class="container center">
+                <div class="expiration-notice">
+                    <h2>Relationship Expired</h2>
+                    <div class="timer-expired">00:00:00</div>
+                    
+                    <div class="match-summary">
+                        <div class="match-avatar-large" id="expired-avatar">👤</div>
+                        <h3 id="expired-name">Amy</h3>
+                        
+                        <div class="compatibility-reveal">
+                            <h4>Compatibility Score</h4>
+                            <div class="score-display" id="compatibility-score">0%</div>
+                            <p id="score-message">The System has learned from this pairing.</p>
+                        </div>
+                        
+                        <div class="relationship-summary" id="relationship-summary">
+                            <!-- Generated by JS -->
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary" onclick="continueToNextMatch()">CONTINUE</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rebellion Choice Screen -->
+        <section id="rebellion-screen" class="screen">
+            <div class="container center">
+                <h2>A Different Path</h2>
+                
+                <div class="rebellion-content">
+                    <div class="match-avatar-large">💕</div>
+                    <h3 id="rebellion-match-name">Amy</h3>
+                    
+                    <p class="rebellion-text">
+                        You've been through <span id="total-relationships">0</span> relationships. 
+                        You've spent <span id="total-hours">0</span> hours in The System.
+                    </p>
+                    
+                    <p class="rebellion-text">
+                        You've been paired with <span id="rebellion-name">this person</span> again. 
+                        Something feels different this time. They look at you with recognition.
+                    </p>
+                    
+                    <div class="rebellion-dialogue">
+                        <p>"What if we just... didn't check the timer? What if we just stayed together?"</p>
+                    </div>
+                    
+                    <div class="rebellion-choices">
+                        <button class="btn-danger" onclick="rebel()">
+                            🔓 Rebel Against The System
+                        </button>
+                        <button class="btn-secondary" onclick="obeySystem()">
+                            Trust The System's Process
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ultimate Pairing Screen -->
+        <section id="ultimate-screen" class="screen">
+            <div class="container center">
+                <h2>Your Ultimate Pairing</h2>
+                
+                <div class="ultimate-content">
+                    <div class="system-message">
+                        <p>After <span id="final-relationships">0</span> relationships, The System has determined your perfect match.</p>
+                    </div>
+                    
+                    <div class="ultimate-match">
+                        <div class="match-avatar-large" id="ultimate-avatar">👤</div>
+                        <h3 id="ultimate-name">???</h3>
+                        
+                        <div class="ultimate-compatibility">
+                            <h4>Ultimate Compatibility</h4>
+                            <div class="score-display ultimate" id="ultimate-score">99.8%</div>
+                        </div>
+                        
+                        <div class="device-reveal" id="device-reveal">
+                            <button class="btn-primary" onclick="checkUltimateDevice()">Check Your Device</button>
+                            <p class="hint">See your relationship duration</p>
+                        </div>
+                        
+                        <div class="ultimate-timer" id="ultimate-timer" style="display: none;">
+                            <h4>Relationship Duration:</h4>
+                            <div class="timer-display large">∞</div>
+                            <p class="forever-text">Forever</p>
+                        </div>
+                    </div>
+                    
+                    <div id="ultimate-message" style="display: none;">
+                        <p class="ending-text" id="ending-text"></p>
+                        <button class="btn-primary" onclick="restartExperience()">Experience Again</button>
+                        <button class="btn-secondary" onclick="goHome()">Back to Home</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rebellion Ending Screen -->
+        <section id="rebellion-ending-screen" class="screen">
+            <div class="container center">
+                <div class="rebellion-ending">
+                    <h2>You Chose Each Other</h2>
+                    
+                    <div class="escape-visual">
+                        <div class="avatar-pair">
+                            <span class="avatar-left">👤</span>
+                            <span class="heart">💕</span>
+                            <span class="avatar-right">👤</span>
+                        </div>
+                    </div>
+                    
+                    <div class="ending-message">
+                        <p>You and <span id="rebel-partner-name">Amy</span> climbed the wall together.</p>
+                        <p>You chose autonomy over algorithm.</p>
+                        <p>You chose uncertainty over predetermined perfection.</p>
+                        <p>You chose each other.</p>
+                        
+                        <div class="twist-reveal" id="twist-reveal">
+                            <hr>
+                            <p class="twist-text">
+                                But here's the twist from the episode: You were both simulations all along. 
+                                The real Frank and Amy ran this scenario 1,000 times. 
+                                998 times, they rebelled and chose each other.
+                            </p>
+                            <p class="twist-text">
+                                That's how The System knew they were a 99.8% match.
+                            </p>
+                            <p class="twist-text">
+                                Sometimes rebellion is exactly what the algorithm predicts.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary" onclick="restartExperience()">Experience Again</button>
+                    <button class="btn-secondary" onclick="goHome()">Back to Home</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-link">← Back to Home</a>
+            <a href="whitechristmas.html" class="nav-link">White Christmas</a>
+        </nav>
+    </div>
+
+    <script src="hangthedj.js"></script>
+</body>
+</html>

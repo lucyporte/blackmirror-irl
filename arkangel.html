@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARKANGEL | blackmirror.irl</title>
+    <link rel="stylesheet" href="arkangel.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">blackmirror<span class="irl">.irl</span></div>
+            <div class="episode-badge">ARKANGEL</div>
+        </header>
+
+        <!-- Welcome Screen -->
+        <section id="welcome-screen" class="screen active">
+            <div class="welcome-content">
+                <div class="product-logo">
+                    <div class="logo-icon">👁️</div>
+                    <h1>Arkangel</h1>
+                    <p class="tagline">Parental Peace of Mind</p>
+                </div>
+                
+                <div class="product-info">
+                    <h2>Protect Your Child</h2>
+                    <p class="intro-text">
+                        Arkangel is a revolutionary parental monitoring system that keeps your child safe 
+                        in an increasingly dangerous world.
+                    </p>
+                    
+                    <div class="features-grid">
+                        <div class="feature">
+                            <span class="feature-icon">📍</span>
+                            <h3>Real-Time Location</h3>
+                            <p>Always know where your child is</p>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">👁️</span>
+                            <h3>Vision Monitoring</h3>
+                            <p>See what your child sees</p>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">❤️</span>
+                            <h3>Health Tracking</h3>
+                            <p>Monitor vitals in real-time</p>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🔒</span>
+                            <h3>Content Filtering</h3>
+                            <p>Block inappropriate imagery</p>
+                        </div>
+                    </div>
+                    
+                    <div class="legal-notice">
+                        <p><strong>Important:</strong> Arkangel requires a minor implant procedure. 
+                        Once installed, the system monitors continuously until age 18.</p>
+                    </div>
+                </div>
+                
+                <div class="setup-form">
+                    <h3>Parent Registration</h3>
+                    <input type="text" id="parent-name" placeholder="Your name" value="Marie" />
+                    <input type="text" id="child-name" placeholder="Child's name" value="Sara" />
+                    <select id="child-age">
+                        <option value="3">3 years old</option>
+                        <option value="5">5 years old</option>
+                        <option value="8">8 years old</option>
+                        <option value="12">12 years old</option>
+                    </select>
+                    <button class="btn-primary" onclick="activateSystem()">ACTIVATE ARKANGEL</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Screen -->
+        <section id="dashboard-screen" class="screen">
+            <div class="dashboard-container">
+                <!-- Status Bar -->
+                <div class="status-bar">
+                    <div class="status-info">
+                        <span class="status-dot"></span>
+                        <span>System Active</span>
+                    </div>
+                    <div class="child-info">
+                        Monitoring: <strong id="child-name-display">Sara</strong> 
+                        (Age: <span id="child-age-display">3</span>)
+                    </div>
+                    <div class="parent-info">
+                        Parent: <span id="parent-name-display">Marie</span>
+                    </div>
+                </div>
+                
+                <!-- Main Monitoring Panel -->
+                <div class="monitoring-panel">
+                    <!-- Vision Feed -->
+                    <div class="vision-feed">
+                        <div class="feed-header">
+                            <h3>Vision Feed</h3>
+                            <div class="filter-toggle">
+                                <label>
+                                    <input type="checkbox" id="content-filter" checked onchange="toggleFilter()" />
+                                    Content Filter: <span id="filter-status">ON</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="feed-view" id="vision-view">
+                            <div class="feed-placeholder">
+                                <p>Waiting for activity...</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Data Panel -->
+                    <div class="data-panel">
+                        <!-- Location -->
+                        <div class="data-card">
+                            <h4>📍 Location</h4>
+                            <p class="location-text" id="location-text">Home</p>
+                            <div class="mini-map">🗺️</div>
+                        </div>
+                        
+                        <!-- Vitals -->
+                        <div class="data-card">
+                            <h4>❤️ Health Vitals</h4>
+                            <p>Heart Rate: <span id="heart-rate">82</span> bpm</p>
+                            <p>Stress Level: <span id="stress-level">Low</span></p>
+                            <p>Cortisol: <span id="cortisol">Normal</span></p>
+                        </div>
+                        
+                        <!-- Activity -->
+                        <div class="data-card">
+                            <h4>📊 Current Activity</h4>
+                            <p id="activity-status">Playing at home</p>
+                        </div>
+                        
+                        <!-- Statistics -->
+                        <div class="data-card">
+                            <h4>📈 Today's Stats</h4>
+                            <p>Filtered Content: <span id="filtered-count">0</span></p>
+                            <p>Alerts Triggered: <span id="alert-count">0</span></p>
+                            <p>Monitoring Time: <span id="monitor-time">0</span>h</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event Log -->
+                <div class="event-log">
+                    <h3>Event Log</h3>
+                    <div class="log-entries" id="log-entries">
+                        <p class="log-entry system">System activated. Monitoring initiated.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Incident Screen -->
+        <section id="incident-screen" class="screen">
+            <div class="incident-container">
+                <div class="incident-alert">
+                    <div class="alert-icon">⚠️</div>
+                    <h2 id="incident-title">Alert</h2>
+                    <p id="incident-description"></p>
+                </div>
+                
+                <div class="incident-details">
+                    <div class="detail-row">
+                        <span>Location:</span>
+                        <span id="incident-location"></span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Time:</span>
+                        <span id="incident-time"></span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Stress Level:</span>
+                        <span id="incident-stress"></span>
+                    </div>
+                </div>
+                
+                <div class="incident-feed">
+                    <h3>What Sara Sees:</h3>
+                    <div class="incident-vision" id="incident-vision"></div>
+                </div>
+                
+                <div class="incident-choices" id="incident-choices">
+                    <!-- Generated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Consequence Screen -->
+        <section id="consequence-screen" class="screen">
+            <div class="consequence-container">
+                <h2>System Update</h2>
+                <p class="consequence-text" id="consequence-text"></p>
+                <div class="consequence-impact" id="consequence-impact"></div>
+                <button class="btn-primary" onclick="returnToDashboard()">CONTINUE MONITORING</button>
+            </div>
+        </section>
+
+        <!-- Ending Screen -->
+        <section id="ending-screen" class="screen">
+            <div class="ending-container">
+                <h2 id="ending-title">System Deactivated</h2>
+                
+                <div class="ending-content">
+                    <p class="ending-text" id="ending-text"></p>
+                    
+                    <div class="ending-stats">
+                        <h3>Final Statistics</h3>
+                        <div class="stat-row">
+                            <span>Total Monitoring Time:</span>
+                            <span id="final-time">0 years</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Content Filtered:</span>
+                            <span id="final-filtered">0 instances</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Interventions:</span>
+                            <span id="final-interventions">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Trust Level:</span>
+                            <span id="final-trust">Unknown</span>
+                        </div>
+                    </div>
+                    
+                    <div class="episode-reflection">
+                        <p><em>"In the episode, Marie's overprotection destroyed Sara's ability to process reality. 
+                        Sara couldn't see violence, so she couldn't understand danger. She couldn't see her grandfather's death. 
+                        When the filter was finally removed, she couldn't cope with the real world."</em></p>
+                        <br>
+                        <p><strong>The question: How much monitoring is protection, and how much is control?</strong></p>
+                    </div>
+                </div>
+                
+                <button class="btn-primary" onclick="restartExperience()">Start Over</button>
+                <button class="btn-secondary" onclick="goHome()">Back to Home</button>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-link">← Back to Home</a>
+            <a href="hangthedj.html" class="nav-link">Hang the DJ</a>
+        </nav>
+    </div>
+
+    <script src="arkangel.js"></script>
+</body>
+</html>

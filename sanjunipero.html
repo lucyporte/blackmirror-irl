@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAN JUNIPERO | blackmirror.irl</title>
+    <link rel="stylesheet" href="sanjunipero.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">blackmirror<span class="irl">.irl</span></div>
+            <div class="episode-badge">SAN JUNIPERO</div>
+        </header>
+
+        <!-- Welcome Screen -->
+        <section id="welcome-screen" class="screen active">
+            <div class="welcome-content">
+                <div class="paradise-logo">
+                    <h1>🌴 San Junipero 🌴</h1>
+                    <p class="tagline">Where You Can Live Forever</p>
+                </div>
+                
+                <div class="welcome-info">
+                    <p class="intro-text">
+                        Welcome to San Junipero - a digital paradise where time stands still and 
+                        the party never ends. Choose any decade, meet new people, and live your best life. 
+                        Forever.
+                    </p>
+                    
+                    <div class="service-info">
+                        <h3>What is San Junipero?</h3>
+                        <p>San Junipero is a cloud-based afterlife simulation. Your consciousness is uploaded 
+                        to our servers, allowing you to exist in a virtual beach town for eternity.</p>
+                        
+                        <div class="features">
+                            <div class="feature-item">
+                                <span class="feature-icon">🕐</span>
+                                <p>Visit any decade from the 1980s onwards</p>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">💃</span>
+                                <p>Dance, socialize, and make connections</p>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">🏖️</span>
+                                <p>Eternal sunshine and good vibes</p>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">💕</span>
+                                <p>Find love that lasts forever</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trial-info">
+                        <p><strong>First-Time Visitors:</strong> You're starting with a 5-hour trial. 
+                        Explore, meet people, and decide if you want to stay forever.</p>
+                    </div>
+                </div>
+                
+                <div class="user-setup">
+                    <h3>Create Your Avatar</h3>
+                    <input type="text" id="user-name" placeholder="Your name" value="Yorkie" />
+                    <select id="user-age-appearance">
+                        <option value="young">Young (20s)</option>
+                        <option value="middle">Middle-aged (40s)</option>
+                        <option value="elder">Elder (60s+)</option>
+                    </select>
+                    <button class="btn-primary" onclick="enterParadise()">ENTER SAN JUNIPERO</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Decade Selection Screen -->
+        <section id="decade-screen" class="screen">
+            <div class="decade-container">
+                <h2>Choose Your Era</h2>
+                <p class="subtitle">Travel through time. Each decade has its own vibe.</p>
+                
+                <div class="decades-grid">
+                    <div class="decade-card" onclick="selectDecade('1980s')">
+                        <div class="decade-year">1980s</div>
+                        <div class="decade-vibe">Neon, synth-pop, arcade games</div>
+                        <div class="decade-emoji">🕹️💿✨</div>
+                    </div>
+                    
+                    <div class="decade-card" onclick="selectDecade('1990s')">
+                        <div class="decade-year">1990s</div>
+                        <div class="decade-vibe">Grunge, alternative, carefree</div>
+                        <div class="decade-emoji">🎸📼🌟</div>
+                    </div>
+                    
+                    <div class="decade-card" onclick="selectDecade('2000s')">
+                        <div class="decade-year">2000s</div>
+                        <div class="decade-vibe">Pop, bling, flip phones</div>
+                        <div class="decade-emoji">📱💎🎤</div>
+                    </div>
+                    
+                    <div class="decade-card" onclick="selectDecade('2010s')">
+                        <div class="decade-year">2010s</div>
+                        <div class="decade-vibe">EDM, festivals, modern</div>
+                        <div class="decade-emoji">🎧🌈💫</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Club/Town Screen -->
+        <section id="club-screen" class="screen">
+            <div class="club-container">
+                <!-- Status Bar -->
+                <div class="status-bar">
+                    <div class="user-display">
+                        <span class="avatar-icon">😊</span>
+                        <span id="player-name-display">Yorkie</span>
+                    </div>
+                    <div class="decade-display" id="current-decade-display">1980s</div>
+                    <div class="time-display">
+                        Trial Time: <span id="trial-time">5:00:00</span>
+                    </div>
+                </div>
+                
+                <!-- Scene -->
+                <div class="scene-view">
+                    <div class="scene-description" id="scene-description">
+                        You're at Tucker's - the hottest club in San Junipero. 
+                        Neon lights pulse to the rhythm of 80s synth-pop. People are dancing, laughing, living.
+                    </div>
+                    
+                    <div class="scene-people" id="scene-people">
+                        <!-- Generated by JS -->
+                    </div>
+                </div>
+                
+                <!-- Actions -->
+                <div class="action-panel">
+                    <button class="action-btn" onclick="exploreTown()">
+                        <span class="btn-icon">🚶</span>
+                        Explore Town
+                    </button>
+                    <button class="action-btn" onclick="showDecadeSelect()">
+                        <span class="btn-icon">🕐</span>
+                        Change Era
+                    </button>
+                    <button class="action-btn" onclick="dance()">
+                        <span class="btn-icon">💃</span>
+                        Dance
+                    </button>
+                </div>
+                
+                <!-- Connections -->
+                <div class="connections-panel">
+                    <h3>Your Connections</h3>
+                    <div class="connections-list" id="connections-list">
+                        <p class="empty-state">You haven't met anyone yet. Start socializing!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conversation Screen -->
+        <section id="conversation-screen" class="screen">
+            <div class="conversation-container">
+                <div class="conversation-header">
+                    <div class="person-info">
+                        <div class="person-avatar" id="conv-avatar">👤</div>
+                        <div class="person-details">
+                            <h3 id="conv-name">Kelly</h3>
+                            <p id="conv-bio">Cool, confident, mysterious</p>
+                        </div>
+                    </div>
+                    <div class="connection-level">
+                        Connection: <span id="connection-level">0</span>/10
+                    </div>
+                </div>
+                
+                <div class="conversation-dialogue">
+                    <div class="dialogue-box npc">
+                        <p id="npc-dialogue">Hey, I haven't seen you here before. First time in San Junipero?</p>
+                    </div>
+                </div>
+                
+                <div class="conversation-responses" id="conversation-responses">
+                    <!-- Generated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Decision Screen -->
+        <section id="decision-screen" class="screen">
+            <div class="decision-container">
+                <h2>Your Trial Has Ended</h2>
+                
+                <div class="decision-content">
+                    <p class="decision-text">
+                        You've experienced San Junipero. You've made connections. 
+                        <span id="special-connection"></span>
+                    </p>
+                    
+                    <p class="decision-text">
+                        Now you must decide: Do you want to upload your consciousness permanently 
+                        and live in San Junipero forever? Or pass away naturally in the physical world?
+                    </p>
+                    
+                    <div class="decision-info">
+                        <div class="decision-option">
+                            <h3>🌐 Stay Forever</h3>
+                            <p>Your consciousness lives on in San Junipero. You'll never age, never die. 
+                            The party never ends. Your connections remain. It's eternal sunshine.</p>
+                        </div>
+                        
+                        <div class="decision-option">
+                            <h3>🕊️ Pass On</h3>
+                            <p>You return to the physical world and eventually pass away naturally. 
+                            Your time in San Junipero was beautiful, but all things must end.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="decision-buttons">
+                        <button class="btn-stay" onclick="stayForever()">STAY IN SAN JUNIPERO</button>
+                        <button class="btn-leave" onclick="passOn()">PASS ON</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ending Screen -->
+        <section id="ending-screen" class="screen">
+            <div class="ending-container">
+                <h2 id="ending-title">Heaven is a Place on Earth</h2>
+                
+                <div class="ending-content">
+                    <div class="ending-visual" id="ending-visual">
+                        <div class="ending-emoji">🌴✨💕🌈</div>
+                    </div>
+                    
+                    <p class="ending-text" id="ending-text"></p>
+                    
+                    <div class="ending-stats">
+                        <div class="stat-item">
+                            <span>Decades Visited:</span>
+                            <span id="decades-visited">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Connections Made:</span>
+                            <span id="connections-made">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Dances:</span>
+                            <span id="dances-count">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="episode-note">
+                        <p><em>San Junipero is the only truly optimistic Black Mirror episode. 
+                        Yorkie and Kelly found love and chose to live together forever in the cloud. 
+                        Sometimes technology gives us second chances.</em></p>
+                        <p><strong>🎵 "Heaven is a place on Earth..." 🎵</strong></p>
+                    </div>
+                </div>
+                
+                <button class="btn-primary" onclick="restartExperience()">Visit Again</button>
+                <button class="btn-secondary" onclick="goHome()">Back to Home</button>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-link">← Back to Home</a>
+            <a href="arkangel.html" class="nav-link">Arkangel</a>
+        </nav>
+    </div>
+
+    <script src="sanjunipero.js"></script>
+</body>
+</html>
