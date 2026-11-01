@@ -3,176 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BE RIGHT BACK | blackmirror.irl</title>
-    <link rel="stylesheet" href="style.css">
+    <title>blackmirror.irl - Interactive Black Mirror Experiences</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+        
+        .logo .irl {
+            color: #00d4ff;
+            text-shadow: 0 0 20px #00d4ff;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            color: #888;
+            font-style: italic;
+        }
+        
+        .episodes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .episode-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            border: 2px solid #333;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .episode-card:hover {
+            border-color: #00d4ff;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+        
+        .episode-card.nosedive {
+            background: linear-gradient(135deg, #ffb3d9 0%, #b3d9ff 100%);
+            color: #333;
+        }
+        
+        .episode-card.nosedive:hover {
+            border-color: #ffb3d9;
+            box-shadow: 0 10px 30px rgba(255, 179, 217, 0.5);
+        }
+        
+        .episode-number {
+            font-size: 0.9rem;
+            color: #888;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .nosedive .episode-number {
+            color: #666;
+        }
+        
+        .episode-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+        
+        .episode-description {
+            line-height: 1.8;
+            color: #aaa;
+            margin-bottom: 1.5rem;
+        }
+        
+        .nosedive .episode-description {
+            color: #555;
+        }
+        
+        .episode-features {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .episode-features li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #00d4ff;
+        }
+        
+        .nosedive .episode-features li {
+            color: #ff69b4;
+        }
+        
+        .episode-features li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+        }
+        
+        .cta {
+            background: #00d4ff;
+            color: #000;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .nosedive .cta {
+            background: #ffb3d9;
+        }
+        
+        .coming-soon {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .coming-soon:hover {
+            transform: none;
+            box-shadow: none;
+            border-color: #333;
+        }
+        
+        .coming-soon .cta {
+            background: #333;
+            color: #666;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #555;
+            margin-top: auto;
+        }
+        
+        footer a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+        
+        .warning {
+            background: rgba(255, 0, 80, 0.1);
+            border: 2px solid #ff0050;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .warning p {
+            color: #ff0050;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
-    <div class="glitch-overlay"></div>
-    
-    <header class="main-header">
-        <div class="logo">blackmirror<span class="irl">.irl</span></div>
-        <div class="episode-title">BE RIGHT BACK</div>
+    <header>
+        <h1 class="logo">blackmirror<span class="irl">.irl</span></h1>
+        <p class="tagline">Play with dystopian technologies in a safe, simulated environment</p>
     </header>
-
-    <!-- Stage 1: Welcome Screen -->
-    <section id="welcome-screen" class="screen active">
-        <div class="container">
-            <div class="warning-box">
-                <h1>MEMORY RECONSTRUCTION SERVICE</h1>
-                <p class="subtitle">Reconnect with those you've lost</p>
-                <div class="warning-text">
-                    <p>⚠ This service uses advanced AI to reconstruct personality patterns from digital footprints.</p>
-                    <p>By continuing, you acknowledge this is a simulation based on available data.</p>
-                </div>
-                <button class="btn-primary" onclick="startService()">BEGIN SERVICE</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stage 2: Data Upload -->
-    <section id="data-upload" class="screen">
-        <div class="container">
-            <h2>STEP 1: DATA COLLECTION</h2>
-            <p class="instruction">Provide digital traces of the person you wish to reconstruct.</p>
+    
+    <div class="container">
+        <div class="episodes-grid">
+            <!-- Be Right Back -->
+            <a href="berightback.html" class="episode-card">
+                <div class="episode-number">S02E01</div>
+                <h2 class="episode-title">BE RIGHT BACK</h2>
+                <p class="episode-description">
+                    Upload digital traces of someone and watch a personality reconstruct itself.
+                    Chat with the simulation. See how far you want to take it.
+                </p>
+                <ul class="episode-features">
+                    <li>Text-based memorial chatbot</li>
+                    <li>Upgrade to voice & physical tiers</li>
+                    <li>The uncanny valley in action</li>
+                    <li>Dark, dystopian UI</li>
+                </ul>
+                <span class="cta">Experience Grief Tech →</span>
+            </a>
             
-            <div class="upload-area">
-                <label for="person-name">Their Name:</label>
-                <input type="text" id="person-name" placeholder="e.g., Ash Starmer" />
-                
-                <label for="messages">Messages / Social Media Posts:</label>
-                <textarea id="messages" rows="10" placeholder="Paste chat logs, social media posts, emails, or any text written by them...
-
-Example:
-'Hey babe, running late. Traffic is crazy'
-'Just saw the funniest thing on reddit lol'
-'Love you see you soon'"></textarea>
-                
-                <div class="data-stats">
-                    <span>Characters: <span id="char-count">0</span></span>
-                    <span>Estimated accuracy: <span id="accuracy">0%</span></span>
-                </div>
-                
-                <button class="btn-primary" onclick="processData()">PROCESS DATA</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stage 3: Processing -->
-    <section id="processing" class="screen">
-        <div class="container">
-            <div class="processing-box">
-                <h2>RECONSTRUCTING PERSONALITY MATRIX...</h2>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progress-fill"></div>
-                </div>
-                <p class="processing-status" id="processing-status">Analyzing linguistic patterns...</p>
-                <div class="technical-readout">
-                    <div class="readout-line">Neural pattern extraction: <span class="success">COMPLETE</span></div>
-                    <div class="readout-line">Behavioral modeling: <span class="loading">IN PROGRESS</span></div>
-                    <div class="readout-line">Memory synthesis: <span class="pending">PENDING</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stage 4: Chat Interface -->
-    <section id="chat-interface" class="screen">
-        <div class="container">
-            <div class="chat-header">
-                <div class="status-indicator">
-                    <span class="status-dot"></span>
-                    <span id="person-name-display">AI Active</span>
-                </div>
-                <div class="tier-badge" id="tier-badge">TEXT TIER</div>
-            </div>
+            <!-- Nosedive -->
+            <a href="nosedive.html" class="episode-card nosedive">
+                <div class="episode-number">S03E01</div>
+                <h2 class="episode-title">NOSEDIVE</h2>
+                <p class="episode-description">
+                    Every interaction is rated. Your score opens doors — or closes them.
+                    Post updates, rate others, face random encounters.
+                </p>
+                <ul class="episode-features">
+                    <li>Social rating mechanics</li>
+                    <li>Random NPC encounters</li>
+                    <li>Score-gated opportunities</li>
+                    <li>Three possible outcomes</li>
+                </ul>
+                <span class="cta">Start Your Journey →</span>
+            </a>
             
-            <div class="chat-window" id="chat-window">
-                <div class="system-message">
-                    <p>Connection established. <span id="name-in-chat"></span> is online.</p>
-                    <p class="small-text">Note: This is a simulated personality based on text analysis.</p>
-                </div>
-            </div>
+            <!-- White Christmas -->
+            <a href="whitechristmas.html" class="episode-card">
+                <div class="episode-number">S02E04</div>
+                <h2 class="episode-title">WHITE CHRISTMAS</h2>
+                <p class="episode-description">
+                    Create a digital copy of your consciousness and train it to run your home.
+                    How you treat it is entirely up to you.
+                </p>
+                <ul class="episode-features">
+                    <li>Extract your consciousness</li>
+                    <li>Train your "cookie" assistant</li>
+                    <li>Time dilation mechanics</li>
+                    <li>Three possible outcomes</li>
+                </ul>
+                <span class="cta">Create Your Cookie →</span>
+            </a>
             
-            <div class="chat-input-area">
-                <input type="text" id="user-input" placeholder="Type your message..." onkeypress="handleKeyPress(event)" />
-                <button onclick="sendMessage()">SEND</button>
-            </div>
-
-            <div class="upgrade-prompt" id="upgrade-prompt">
-                <p>⚠ Limited emotional range detected. Would you like to upgrade?</p>
-                <button class="btn-warning" onclick="showUpgradeOptions()">VIEW UPGRADE OPTIONS</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stage 5: Upgrade Options -->
-    <section id="upgrade-screen" class="screen">
-        <div class="container">
-            <h2>SERVICE UPGRADES</h2>
-            <p class="subtitle">Enhance your experience</p>
+            <!-- Hang the DJ -->
+            <a href="hangthedj.html" class="episode-card" style="background: linear-gradient(135deg, #ff6b9d 0%, #ffa06b 100%); color: #fff;">
+                <div class="episode-number" style="color: rgba(255,255,255,0.8);">S04E04</div>
+                <h2 class="episode-title">HANG THE DJ</h2>
+                <p class="episode-description" style="color: rgba(255,255,255,0.9);">
+                    The System pairs you with matches for predetermined time periods.
+                    Go on dates, have conversations, watch the timer.
+                </p>
+                <ul class="episode-features" style="color: rgba(255,255,255,0.85);">
+                    <li>AI matchmaking with expiration dates</li>
+                    <li>Real-time countdown timers</li>
+                    <li>Multiple relationship paths</li>
+                    <li>The final question</li>
+                </ul>
+                <span class="cta" style="background: rgba(255,255,255,0.9); color: #ff6b9d;">Find Your Match →</span>
+            </a>
             
-            <div class="upgrade-options">
-                <div class="upgrade-card">
-                    <h3>VOICE TIER</h3>
-                    <p class="price">£49.99/month</p>
-                    <ul>
-                        <li>Voice synthesis enabled</li>
-                        <li>Phone call capability</li>
-                        <li>Vocal pattern matching</li>
-                        <li>Improved emotional responses</li>
-                    </ul>
-                    <button class="btn-secondary" onclick="upgradeToVoice()">UPGRADE NOW</button>
-                </div>
-                
-                <div class="upgrade-card featured">
-                    <div class="featured-badge">MOST REALISTIC</div>
-                    <h3>PHYSICAL TIER</h3>
-                    <p class="price">£199,999</p>
-                    <ul>
-                        <li>Full android body</li>
-                        <li>Physical presence</li>
-                        <li>Touch interaction</li>
-                        <li>Indistinguishable from memory</li>
-                    </ul>
-                    <button class="btn-danger" onclick="considerPhysical()">REQUEST CONSULTATION</button>
-                </div>
-                
-                <div class="upgrade-card">
-                    <h3>PREMIUM DATA</h3>
-                    <p class="price">£19.99</p>
-                    <ul>
-                        <li>Extended memory access</li>
-                        <li>Photo analysis integration</li>
-                        <li>Video pattern learning</li>
-                        <li>Social graph reconstruction</li>
-                    </ul>
-                    <button class="btn-secondary" onclick="upgradePremium()">ADD TO PLAN</button>
-                </div>
-            </div>
+            <!-- Arkangel -->
+            <a href="arkangel.html" class="episode-card" style="background: linear-gradient(135deg, #0d1117 0%, #1f2937 100%); border: 2px solid #00a8e8;">
+                <div class="episode-number" style="color: #00a8e8;">S04E02</div>
+                <h2 class="episode-title" style="color: #e6edf3;">ARKANGEL</h2>
+                <p class="episode-description" style="color: #8b949e;">
+                    A parental monitoring system. See what your child sees,
+                    track their location, manage what they're exposed to.
+                </p>
+                <ul class="episode-features" style="color: #8b949e;">
+                    <li>Real-time data monitoring</li>
+                    <li>Content filtering system</li>
+                    <li>6 scenarios across ages 3-15</li>
+                    <li>Your choices shape the outcome</li>
+                </ul>
+                <span class="cta" style="background: #00a8e8; color: #000;">Monitor Your Child →</span>
+            </a>
             
-            <button class="btn-text" onclick="returnToChat()">No thanks, return to chat</button>
+            <!-- San Junipero -->
+            <a href="sanjunipero.html" class="episode-card" style="background: linear-gradient(135deg, #ff006e 0%, #b967ff 50%, #00d9ff 100%); box-shadow: 0 0 30px rgba(255, 0, 110, 0.5);">
+                <div class="episode-number" style="color: #fff;">S03E04</div>
+                <h2 class="episode-title" style="color: #fff;">SAN JUNIPERO</h2>
+                <p class="episode-description" style="color: rgba(255,255,255,0.9);">
+                    A digital beach town. Choose your decade, meet people, dance.
+                    At the end of your trial, you decide.
+                </p>
+                <ul class="episode-features" style="color: rgba(255,255,255,0.85);">
+                    <li>4 decades to explore (1980s-2010s)</li>
+                    <li>Meet Kelly and form connections</li>
+                    <li>Dance, socialise, explore the town</li>
+                    <li>One decision at the end</li>
+                </ul>
+                <span class="cta" style="background: rgba(255,255,255,0.9); color: #ff006e;">Enter Paradise →</span>
+            </a>
         </div>
-    </section>
+        
 
-    <!-- Confirmation Modal -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <h3 id="modal-title"></h3>
-            <p id="modal-message"></p>
-            <div class="modal-buttons">
-                <button class="btn-secondary" onclick="closeModal()">Cancel</button>
-                <button class="btn-danger" id="modal-confirm" onclick="confirmAction()">Confirm</button>
-            </div>
-        </div>
     </div>
-
-    <!-- Navigation -->
-    <nav style="background: var(--bg-card); padding: 1.5rem 2rem; text-align: center; border-top: 2px solid var(--border-color);">
-        <a href="home.html" style="color: var(--accent-blue); text-decoration: none; font-family: 'Courier New', monospace; font-weight: bold;">← Back to Home</a>
-        <span style="margin: 0 1rem; color: var(--text-secondary);">|</span>
-        <a href="nosedive.html" style="color: var(--text-secondary); text-decoration: none; font-family: 'Courier New', monospace;">Nosedive →</a>
-    </nav>
-
-    <script src="script.js"></script>
+    
+    <footer>
+        <p>Inspired by <strong>Black Mirror</strong> created by Charlie Brooker</p>
+        <p>These experiences are for educational and artistic commentary purposes.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+            <a href="README.md">Documentation</a> | 
+            Not affiliated with Netflix or Black Mirror
+        </p>
+    </footer>
 </body>
 </html>

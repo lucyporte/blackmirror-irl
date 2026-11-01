@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BE RIGHT BACK | blackmirror.irl</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glitch-overlay"></div>
+    
+    <header class="main-header">
+        <div class="logo">blackmirror<span class="irl">.irl</span></div>
+        <div class="episode-title">BE RIGHT BACK</div>
+    </header>
+
+    <!-- Stage 1: Welcome Screen -->
+    <section id="welcome-screen" class="screen active">
+        <div class="container">
+            <div class="warning-box">
+                <h1>MEMORY RECONSTRUCTION SERVICE</h1>
+                <p class="subtitle">Reconnect with those you've lost</p>
+                <div class="warning-text">
+                    <p>⚠ This service uses advanced AI to reconstruct personality patterns from digital footprints.</p>
+                    <p>By continuing, you acknowledge this is a simulation based on available data.</p>
+                </div>
+                <button class="btn-primary" onclick="startService()">BEGIN SERVICE</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stage 2: Data Upload -->
+    <section id="data-upload" class="screen">
+        <div class="container">
+            <h2>STEP 1: DATA COLLECTION</h2>
+            <p class="instruction">Provide digital traces of the person you wish to reconstruct.</p>
+            
+            <div class="upload-area">
+                <label for="person-name">Their Name:</label>
+                <input type="text" id="person-name" placeholder="e.g., Ash Starmer" />
+                
+                <label for="messages">Messages / Social Media Posts:</label>
+                <textarea id="messages" rows="10" placeholder="Paste chat logs, social media posts, emails, or any text written by them...
+
+Example:
+'Hey babe, running late. Traffic is crazy'
+'Just saw the funniest thing on reddit lol'
+'Love you see you soon'"></textarea>
+                
+                <div class="data-stats">
+                    <span>Characters: <span id="char-count">0</span></span>
+                    <span>Estimated accuracy: <span id="accuracy">0%</span></span>
+                </div>
+                
+                <button class="btn-primary" onclick="processData()">PROCESS DATA</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stage 3: Processing -->
+    <section id="processing" class="screen">
+        <div class="container">
+            <div class="processing-box">
+                <h2>RECONSTRUCTING PERSONALITY MATRIX...</h2>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <p class="processing-status" id="processing-status">Analyzing linguistic patterns...</p>
+                <div class="technical-readout">
+                    <div class="readout-line">Neural pattern extraction: <span class="success">COMPLETE</span></div>
+                    <div class="readout-line">Behavioral modeling: <span class="loading">IN PROGRESS</span></div>
+                    <div class="readout-line">Memory synthesis: <span class="pending">PENDING</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stage 4: Chat Interface -->
+    <section id="chat-interface" class="screen">
+        <div class="container">
+            <div class="chat-header">
+                <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span id="person-name-display">AI Active</span>
+                </div>
+                <div class="tier-badge" id="tier-badge">TEXT TIER</div>
+            </div>
+            
+            <div class="chat-window" id="chat-window">
+                <div class="system-message">
+                    <p>Connection established. <span id="name-in-chat"></span> is online.</p>
+                    <p class="small-text">Note: This is a simulated personality based on text analysis.</p>
+                </div>
+            </div>
+            
+            <div class="chat-input-area">
+                <input type="text" id="user-input" placeholder="Type your message..." onkeypress="handleKeyPress(event)" />
+                <button onclick="sendMessage()">SEND</button>
+            </div>
+
+            <div class="upgrade-prompt" id="upgrade-prompt">
+                <p>⚠ Limited emotional range detected. Would you like to upgrade?</p>
+                <button class="btn-warning" onclick="showUpgradeOptions()">VIEW UPGRADE OPTIONS</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stage 5: Upgrade Options -->
+    <section id="upgrade-screen" class="screen">
+        <div class="container">
+            <h2>SERVICE UPGRADES</h2>
+            <p class="subtitle">Enhance your experience</p>
+            
+            <div class="upgrade-options">
+                <div class="upgrade-card">
+                    <h3>VOICE TIER</h3>
+                    <p class="price">£49.99/month</p>
+                    <ul>
+                        <li>Voice synthesis enabled</li>
+                        <li>Phone call capability</li>
+                        <li>Vocal pattern matching</li>
+                        <li>Improved emotional responses</li>
+                    </ul>
+                    <button class="btn-secondary" onclick="upgradeToVoice()">UPGRADE NOW</button>
+                </div>
+                
+                <div class="upgrade-card featured">
+                    <div class="featured-badge">MOST REALISTIC</div>
+                    <h3>PHYSICAL TIER</h3>
+                    <p class="price">£199,999</p>
+                    <ul>
+                        <li>Full android body</li>
+                        <li>Physical presence</li>
+                        <li>Touch interaction</li>
+                        <li>Indistinguishable from memory</li>
+                    </ul>
+                    <button class="btn-danger" onclick="considerPhysical()">REQUEST CONSULTATION</button>
+                </div>
+                
+                <div class="upgrade-card">
+                    <h3>PREMIUM DATA</h3>
+                    <p class="price">£19.99</p>
+                    <ul>
+                        <li>Extended memory access</li>
+                        <li>Photo analysis integration</li>
+                        <li>Video pattern learning</li>
+                        <li>Social graph reconstruction</li>
+                    </ul>
+                    <button class="btn-secondary" onclick="upgradePremium()">ADD TO PLAN</button>
+                </div>
+            </div>
+            
+            <button class="btn-text" onclick="returnToChat()">No thanks, return to chat</button>
+        </div>
+    </section>
+
+    <!-- Confirmation Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h3 id="modal-title"></h3>
+            <p id="modal-message"></p>
+            <div class="modal-buttons">
+                <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn-danger" id="modal-confirm" onclick="confirmAction()">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav style="background: var(--bg-card); padding: 1.5rem 2rem; text-align: center; border-top: 2px solid var(--border-color);">
+        <a href="index.html" style="color: var(--accent-blue); text-decoration: none; font-family: 'Courier New', monospace; font-weight: bold;">← Back to Home</a>
+        <span style="margin: 0 1rem; color: var(--text-secondary);">|</span>
+        <a href="nosedive.html" style="color: var(--text-secondary); text-decoration: none; font-family: 'Courier New', monospace;">Nosedive →</a>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
