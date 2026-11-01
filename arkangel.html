@@ -97,7 +97,7 @@
                     <!-- Vision Feed -->
                     <div class="vision-feed">
                         <div class="feed-header">
-                            <h3>Vision Feed</h3>
+                            <h3>Live Data Feed</h3>
                             <div class="filter-toggle">
                                 <label>
                                     <input type="checkbox" id="content-filter" checked onchange="toggleFilter()" />
@@ -106,8 +106,13 @@
                             </div>
                         </div>
                         <div class="feed-view" id="vision-view">
-                            <div class="feed-placeholder">
-                                <p>Waiting for activity...</p>
+                            <div class="live-feed-display">
+                                <div class="feed-line"><span class="feed-label">AUDIO ENV</span> <span id="feed-audio">ambient / quiet</span></div>
+                                <div class="feed-line"><span class="feed-label">VISUAL TAGS</span> <span id="feed-visual">home interior, natural light</span></div>
+                                <div class="feed-line"><span class="feed-label">FACES</span> <span id="feed-faces">0 detected</span></div>
+                                <div class="feed-line"><span class="feed-label">MOVEMENT</span> <span id="feed-movement">sedentary</span></div>
+                                <div class="feed-line"><span class="feed-label">FLAGGED</span> <span id="feed-flagged" class="safe">NONE</span></div>
+                                <div class="feed-pulse"></div>
                             </div>
                         </div>
                     </div>
@@ -228,13 +233,7 @@
                         </div>
                     </div>
                     
-                    <div class="episode-reflection">
-                        <p><em>"In the episode, Marie's overprotection destroyed Sara's ability to process reality. 
-                        Sara couldn't see violence, so she couldn't understand danger. She couldn't see her grandfather's death. 
-                        When the filter was finally removed, she couldn't cope with the real world."</em></p>
-                        <br>
-                        <p><strong>The question: How much monitoring is protection, and how much is control?</strong></p>
-                    </div>
+
                 </div>
                 
                 <button class="btn-primary" onclick="restartExperience()">Start Over</button>

@@ -196,6 +196,35 @@ function activateSystem() {
     startMonitoring();
 }
 
+// Live Feed
+function updateLiveFeed(audio, visual, faces, movement, flagged) {
+    const el = (id) => document.getElementById(id);
+    if (!el('feed-audio')) return;
+    el('feed-audio').textContent = audio;
+    el('feed-visual').textContent = visual;
+    el('feed-faces').textContent = faces;
+    el('feed-movement').textContent = movement;
+    const flagEl = el('feed-flagged');
+    if (flagged) {
+        flagEl.textContent = 'CONTENT FLAGGED';
+        flagEl.className = 'warning';
+    } else {
+        flagEl.textContent = 'NONE';
+        flagEl.className = 'safe';
+    }
+}
+
+function startFeedPulse() {
+    const audioOptions = ['ambient / quiet', 'voices detected', 'outdoor sounds', 'music playing', 'TV audio'];
+    const movementOptions = ['sedentary', 'walking', 'running', 'playing', 'stationary'];
+    setInterval(() => {
+        if (document.getElementById('feed-audio')) {
+            document.getElementById('feed-audio').textContent = audioOptions[Math.floor(Math.random() * audioOptions.length)];
+            document.getElementById('feed-movement').textContent = movementOptions[Math.floor(Math.random() * movementOptions.length)];
+        }
+    }, 4000);
+}
+
 function showScreen(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
@@ -204,6 +233,9 @@ function showScreen(id) {
 function startMonitoring() {
     addLog('System activated. Monitoring initiated.', 'system');
     addLog(`Tracking ${gameState.childName}, age ${gameState.childAge}.`, 'system');
+    
+    updateLiveFeed('ambient / quiet', 'home interior, natural light', '0 detected', 'sedentary', false);
+    startFeedPulse();
     
     // Start first scenario after a moment
     setTimeout(() => {
@@ -276,6 +308,17 @@ function showIncident(scenario) {
     
     addLog(`⚠ ALERT: ${scenario.title}`, 'alert');
     updateVitals(scenario.stress);
+    
+    // Update live feed for this scenario
+    const locationTags = scenario.location.toLowerCase().replace(/[^a-z ]/g, '');
+    const isFlagged = gameState.filterEnabled && scenario.visionFiltered.includes('[CONTENT FILTERED');
+    updateLiveFeed(
+        scenario.stress === 'Very High' ? 'elevated noise, voices' : 'voices detected',
+        locationTags,
+        scenario.stress !== 'Low' ? '2-3 detected' : '1 detected',
+        scenario.stress === 'High' || scenario.stress === 'Very High' ? 'agitated' : 'active',
+        isFlagged
+    );
     
     showScreen('incident-screen');
 }

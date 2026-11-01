@@ -55,8 +55,7 @@
                     </div>
                     
                     <div class="trial-info">
-                        <p><strong>First-Time Visitors:</strong> You're starting with a 5-hour trial. 
-                        Explore, meet people, and decide if you want to stay forever.</p>
+                        <p><strong>First-Time Visitors:</strong> You start with a trial period. Explore, meet people, and decide if you want to stay.</p>
                     </div>
                 </div>
                 
@@ -117,8 +116,9 @@
                         <span id="player-name-display">Yorkie</span>
                     </div>
                     <div class="decade-display" id="current-decade-display">1980s</div>
+                    <div class="location-display" id="current-location-display">Tucker's Bar</div>
                     <div class="time-display">
-                        Trial Time: <span id="trial-time">5:00:00</span>
+                        Trial: <span id="trial-time">01:00</span>
                     </div>
                 </div>
                 
@@ -134,11 +134,14 @@
                     </div>
                 </div>
                 
-                <!-- Actions -->
                 <div class="action-panel">
                     <button class="action-btn" onclick="exploreTown()">
+                        <span class="btn-icon">👁️</span>
+                        Look Around
+                    </button>
+                    <button class="action-btn" onclick="changeLocation()">
                         <span class="btn-icon">🚶</span>
-                        Explore Town
+                        Move Somewhere
                     </button>
                     <button class="action-btn" onclick="showDecadeSelect()">
                         <span class="btn-icon">🕐</span>
@@ -253,12 +256,7 @@
                         </div>
                     </div>
                     
-                    <div class="episode-note">
-                        <p><em>San Junipero is the only truly optimistic Black Mirror episode. 
-                        Yorkie and Kelly found love and chose to live together forever in the cloud. 
-                        Sometimes technology gives us second chances.</em></p>
-                        <p><strong>🎵 "Heaven is a place on Earth..." 🎵</strong></p>
-                    </div>
+
                 </div>
                 
                 <button class="btn-primary" onclick="restartExperience()">Visit Again</button>
