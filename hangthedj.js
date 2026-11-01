@@ -9,7 +9,8 @@ let gameState = {
     conversationIndex: 0,
     currentConversations: [],
     usedMatches: [],
-    amyReunionShown: false
+    amyReunionShown: false,
+    usedConversationIndices: {} // track used convos per character
 };
 
 // Matches
@@ -86,10 +87,22 @@ function assignMatch() {
     gameState.currentMatch = match;
     gameState.conversationIndex = 0;
     
-    // Get 3 random conversations for this match
+    // Get 3 conversations for this match, never repeating previously used ones
     const allConvos = ALL_CONVERSATIONS[match.name] || ALL_CONVERSATIONS.Amy;
-    const shuffled = [...allConvos].sort(() => 0.5 - Math.random());
-    gameState.currentConversations = shuffled.slice(0, 3);
+    if (!gameState.usedConversationIndices[match.name]) {
+        gameState.usedConversationIndices[match.name] = [];
+    }
+    const used = gameState.usedConversationIndices[match.name];
+    const available = allConvos.map((_, i) => i).filter(i => !used.includes(i));
+    // If we've exhausted all, reset for this character
+    if (available.length < 3) {
+        gameState.usedConversationIndices[match.name] = [];
+        available.push(...allConvos.map((_, i) => i));
+    }
+    const shuffled = [...available].sort(() => 0.5 - Math.random());
+    const chosen = shuffled.slice(0, 3);
+    chosen.forEach(i => gameState.usedConversationIndices[match.name].push(i));
+    gameState.currentConversations = chosen.map(i => allConvos[i]);
     
     // Timer: 45 seconds actual, but display as hours/days
     gameState.timerSeconds = 45;

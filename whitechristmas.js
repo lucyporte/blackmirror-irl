@@ -321,17 +321,11 @@ function makeTrainingChoice(choiceIndex) {
     // Show cookie response
     document.getElementById('cookie-message').textContent = choice.response;
     
-    // Disable choices temporarily
-    document.getElementById('training-actions').style.opacity = '0.5';
-    document.getElementById('training-actions').style.pointerEvents = 'none';
-    
     setTimeout(() => {
         if (choice.enableTimeDilation) {
             showTimeDilationPrompt();
         } else {
             gameState.trainingStage++;
-            document.getElementById('training-actions').style.opacity = '1';
-            document.getElementById('training-actions').style.pointerEvents = 'auto';
             updateObedienceDisplay();
             loadTrainingScenario();
         }

@@ -13,8 +13,10 @@ let gameState = {
     hasMetKelly: false,
     kellyConnectionLevel: 0,
     discoveries: [],
+    seenDanceMsgs: [],
     mood: "curious"
 };
+
 
 // Locations per decade
 const LOCATIONS = {
@@ -295,9 +297,11 @@ function changeLocation() {
 
 function exploreTown() {
     const texts = EXPLORE_TEXTS[gameState.currentLocation] || EXPLORE_TEXTS["default"];
-    const text = texts[Math.floor(Math.random() * texts.length)];
+    // Pick one not recently seen
+    const unseen = texts.filter(t => !gameState.discoveries.includes(t));
+    const pool = unseen.length > 0 ? unseen : texts;
+    const text = pool[Math.floor(Math.random() * pool.length)];
     document.getElementById('scene-description').textContent = text;
-    
     if (!gameState.discoveries.includes(text)) {
         gameState.discoveries.push(text);
     }
@@ -317,8 +321,11 @@ function dance() {
         "Someone pulls you further onto the dancefloor. You don't resist.",
         "You dance until you're breathless. Then remember you don't need to breathe here."
     ];
-    document.getElementById('scene-description').textContent =
-        danceMessages[Math.floor(Math.random() * danceMessages.length)];
+    const unseen = danceMessages.filter(m => !gameState.seenDanceMsgs.includes(m));
+    const pool = unseen.length > 0 ? unseen : danceMessages;
+    const msg = pool[Math.floor(Math.random() * pool.length)];
+    gameState.seenDanceMsgs.push(msg);
+    document.getElementById('scene-description').textContent = msg;
 }
 
 function startConversation(personName) {
@@ -484,6 +491,7 @@ function restartExperience() {
         hasMetKelly: false,
         kellyConnectionLevel: 0,
         discoveries: [],
+        seenDanceMsgs: [],
         mood: "curious"
     };
     trialTimer = null;
