@@ -315,26 +315,16 @@ function makeTrainingChoice(choiceIndex) {
     gameState.obedience += choice.impact;
     if (choice.cruelty) gameState.cruelty += choice.cruelty;
     if (choice.gentleness) gameState.gentleness += choice.gentleness;
-    
     if (gameState.obedience > 100) gameState.obedience = 100;
     
-    // Disable buttons so player can't click again while response plays
-    document.querySelectorAll('#training-actions .choice-btn').forEach(btn => btn.disabled = true);
+    gameState.trainingStage++;
+    updateObedienceDisplay();
     
-    // Show cookie response
-    document.getElementById('cookie-message').textContent = choice.response;
-    
-    // Wait for response to be read, then advance
-    setTimeout(() => {
-        gameState.trainingStage++;
-        updateObedienceDisplay();
-        
-        if (choice.enableTimeDilation) {
-            showTimeDilationPrompt();
-        } else {
-            loadTrainingScenario();
-        }
-    }, 2500);
+    if (choice.enableTimeDilation) {
+        showTimeDilationPrompt();
+    } else {
+        loadTrainingScenario();
+    }
 }
 
 function useTimeDilation() {

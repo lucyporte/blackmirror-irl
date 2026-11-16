@@ -102,7 +102,7 @@ const CONVERSATIONS = {
             ]
         },
         {
-            npc: "The music, I guess. And the people. You meet someone new every night here, technically. But most of them are just... passing through.",
+            npc: "Hard to explain. The feeling of it, maybe. And the people. You meet someone new every night here, technically. But most of them are just... passing through.",
             responses: [
                 { text: "Like me?", connection: 3 },
                 { text: "That sounds lonely.", connection: 3 },

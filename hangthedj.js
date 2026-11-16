@@ -117,7 +117,7 @@ function assignMatch() {
 }
 
 function formatFakeTime() {
-    const labels = ["30 seconds", "2 minutes", "1 hour", "12 hours", "5 days"];
+    const labels = ["1 minute", "2 minutes", "3 minutes", "5 minutes", "10 minutes"];
     return labels[Math.floor(Math.random() * labels.length)];
 }
 
