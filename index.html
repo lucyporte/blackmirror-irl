@@ -167,6 +167,19 @@
             color: #666;
         }
         
+        @media (max-width: 600px) {
+            .logo { font-size: 2rem; }
+            .tagline { font-size: 1rem; }
+            header { padding: 2rem 1rem; }
+            .container { padding: 1rem; }
+            .episodes-grid {
+                grid-template-columns: 1fr;
+            }
+            .episode-card { padding: 1.5rem; }
+            .episode-title { font-size: 1.5rem; }
+            footer { padding: 2rem 1rem; text-align: center; }
+        }
+        
         footer {
             text-align: center;
             padding: 3rem 2rem;
@@ -197,7 +210,7 @@
 <body>
     <header>
         <h1 class="logo">blackmirror<span class="irl">.irl</span></h1>
-        <p class="tagline">Play with dystopian technologies in a safe, simulated environment</p>
+        <p class="tagline">Six Black Mirror episodes. Your choices.</p>
     </header>
     
     <div class="container">
@@ -310,7 +323,7 @@
     
     <footer>
         <p>Inspired by <strong>Black Mirror</strong> created by Charlie Brooker</p>
-        <p>These experiences are for educational and artistic commentary purposes.</p>
+        <p>These experiences are for artistic purposes.</p>
         <p style="margin-top: 1rem; font-size: 0.9rem;">
             <a href="README.md">Documentation</a> | 
             Not affiliated with Netflix or Black Mirror

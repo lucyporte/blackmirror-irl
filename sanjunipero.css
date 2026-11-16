@@ -734,3 +734,40 @@ body {
         gap: 1rem;
     }
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .welcome-content,
+    .decade-selection,
+    .town-container,
+    .conversation-container,
+    .decision-container,
+    .ending-container {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .decade-grid,
+    .people-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .decision-info {
+        grid-template-columns: 1fr;
+    }
+
+    .bottom-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .response-btn {
+        text-align: center;
+    }
+
+    .response-btn:hover {
+        transform: none;
+    }
+}

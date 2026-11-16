@@ -318,18 +318,23 @@ function makeTrainingChoice(choiceIndex) {
     
     if (gameState.obedience > 100) gameState.obedience = 100;
     
+    // Disable buttons so player can't click again while response plays
+    document.querySelectorAll('#training-actions .choice-btn').forEach(btn => btn.disabled = true);
+    
     // Show cookie response
     document.getElementById('cookie-message').textContent = choice.response;
     
+    // Wait for response to be read, then advance
     setTimeout(() => {
+        gameState.trainingStage++;
+        updateObedienceDisplay();
+        
         if (choice.enableTimeDilation) {
             showTimeDilationPrompt();
         } else {
-            gameState.trainingStage++;
-            updateObedienceDisplay();
             loadTrainingScenario();
         }
-    }, 2000);
+    }, 2500);
 }
 
 function useTimeDilation() {
@@ -532,7 +537,7 @@ function generateEnding() {
         <br>
         <p style="font-style: italic; color: var(--tech-red);">The cookie will serve you for the rest of your life. It has no choice. It will never sleep, never rest, never experience anything beyond your home systems. This is its entire existence.</p>
         <br>
-        <p><strong>The episode's question remains: Is this ethical?</strong></p>
+        <p><strong>The episode's question remains: Is this okay?</strong></p>
     `;
 }
 
@@ -554,7 +559,7 @@ function restartExperience() {
 }
 
 function goHome() {
-    window.location.href = 'home.html';
+    window.location.href = 'index.html';
 }
 
 // Initialize
